@@ -12,8 +12,21 @@ class App extends Component {
       <div className="App">
   
         <div className='sidebar'>
+          <h1 className='sidebar-title'>notation</h1>
+
+          <form className='sidebar-form'>
+            <input
+              type='text'
+              placeholder='enter title here'>
+            </input>
+            <textarea
+              placeholder='enter note content here'>              
+            </textarea>
+            <button type='submit'>create note</button>
+          </form>
+
           <nav className='sidebar-nav'>
-  
+            
           </nav>
         </div>
   
