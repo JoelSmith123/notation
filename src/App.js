@@ -14,9 +14,13 @@ class App extends Component {
   addNewCategoryToState = (e, category) => {
     e.preventDefault();
     const categories = [...this.state.categories, category]
-    this.setState({
-      categories
-    })
+    this.setState({ categories })
+  }
+
+  addNewNoteToState = (e, note) => {
+    e.preventDefault();
+    const notes = [...this.state.notes, note]
+    this.setState({ notes })
   }
 
   render() {
@@ -29,6 +33,7 @@ class App extends Component {
           <NoteForm 
             categories={this.state.categories}
             addNewCategoryToState={this.addNewCategoryToState} 
+            addNewNoteToState={this.addNewNoteToState}
           />
 
           <nav className='sidebar-nav'>

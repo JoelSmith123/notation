@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { tsConstructorType } from '@babel/types';
 
 export default class NoteForm extends Component {
   constructor(props) {
@@ -7,7 +6,8 @@ export default class NoteForm extends Component {
     this.state = {
       categoryOptions: false,
       newCategoryForm: false,
-      newCategory: ''
+      newCategory: '',
+      newNote: { title: '', content: '', category: '' }
     }
   }
 
@@ -25,10 +25,18 @@ export default class NoteForm extends Component {
     })
   }
 
-  handleNewCategoryChange = (e) => {
+  handleNewCategoryStateChange = (e) => {
     this.setState({
       newCategory: e.target.value
     })
+  }
+
+  handleNewNoteStateChange = (e) => {
+    const newNote = {
+      ...this.state.newNote,
+      [e.target.name]: e.target.value
+    }
+    this.setState({ newNote })
   }
 
   renderExistingCategorySelection() {
@@ -72,7 +80,7 @@ export default class NoteForm extends Component {
         <input          
           type='text'
           value={this.state.newCategory}
-          onChange={this.handleNewCategoryChange}
+          onChange={this.handleNewCategoryStateChange}
           placeholder='enter category name'>
         </input>
         <button 
@@ -91,10 +99,16 @@ export default class NoteForm extends Component {
           
           <input
             type='text'
+            name='title'
+            value={this.state.newNote.title}
+            onChange={e => this.handleNewNoteStateChange(e)}
             placeholder='enter title'>
           </input>
   
           <textarea
+            name='content'
+            value={this.state.newNote.content}
+            onChange={e => this.handleNewNoteStateChange(e)}
             placeholder='enter note content'>              
           </textarea>
   
@@ -105,7 +119,11 @@ export default class NoteForm extends Component {
 
           { this.state.categoryOptions ? this.renderCategoryOptions() : null}
   
-          <button type='submit'>create note</button>
+          <button 
+            type='submit'
+            onClick={e => this.props.addNewNoteToState(e, this.state.newNote)}>
+            create note
+          </button>
   
         </form>
       </div>
