@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import NoteForm from './NoteForm.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      notes: [],
+      categories: [],
+    }
+  }
+
+  addNewCategoryToState = (e, category) => {
+    e.preventDefault();
+    const categories = [...this.state.categories, category]
+    this.setState({ categories })
+  }
+
+  addNewNoteToState = (e, note) => {
+    e.preventDefault();
+    const notes = [...this.state.notes, note]
+    this.setState({ notes })
+  }
+
+  render() {
+    return (
+      <div className="App">
+  
+        <div className='sidebar'>
+          <h1 className='sidebar-title'>notation</h1>
+          
+          <NoteForm 
+            categories={this.state.categories}
+            addNewCategoryToState={this.addNewCategoryToState} 
+            addNewNoteToState={this.addNewNoteToState}
+          />
+
+          <nav className='sidebar-nav'>
+
+          </nav>
+        </div>
+
+        <div className='notes-container'>
+  
+        </div>
+      </div>
+    );
+  }
+  
 }
 
 export default App;
