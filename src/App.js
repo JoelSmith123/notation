@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import NoteForm from './NoteForm.js';
 import './App.css';
 
 class App extends Component {
@@ -17,23 +17,14 @@ class App extends Component {
   
         <div className='sidebar'>
           <h1 className='sidebar-title'>notation</h1>
-
-          <form className='sidebar-form'>
-            <input
-              type='text'
-              placeholder='enter title here'>
-            </input>
-            <textarea
-              placeholder='enter note content here'>              
-            </textarea>
-            <button type='submit'>create note</button>
-          </form>
+          
+          <NoteForm />
 
           <nav className='sidebar-nav'>
 
           </nav>
         </div>
-  
+
         <div className='notes-container'>
   
         </div>
