@@ -5,6 +5,10 @@ import './App.css';
 class App extends Component {
   constructor() {
     super();
+    this.state = {
+      notes: [],
+      categories: [],
+    }
   }
 
   render() {
@@ -26,7 +30,7 @@ class App extends Component {
           </form>
 
           <nav className='sidebar-nav'>
-            
+
           </nav>
         </div>
   
