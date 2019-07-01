@@ -7,7 +7,7 @@ class App extends Component {
     super();
     this.state = {
       notes: [],
-      categories: [],
+      categories: ['Main'],
     }
   }
 
@@ -18,7 +18,7 @@ class App extends Component {
         <div className='sidebar'>
           <h1 className='sidebar-title'>notation</h1>
           
-          <NoteForm />
+          <NoteForm categories={this.state.categories} />
 
           <nav className='sidebar-nav'>
 
