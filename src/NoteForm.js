@@ -112,11 +112,17 @@ export default class NoteForm extends Component {
             onChange={e => this.handleNewNoteStateChange(e)}
             placeholder='enter note content'>              
           </textarea>
-  
-          <button
-            onClick={e => this.changeCategoryOptionsState(e)}>
-            add a category
-          </button>
+
+          {
+            this.state.categoryOptions ? 
+            null
+            :
+            <button
+              onClick={e => this.changeCategoryOptionsState(e)}>
+              add a category
+            </button>
+          }
+
 
           { this.state.categoryOptions ? this.renderCategoryOptions() : null}
   
