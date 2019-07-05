@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './NoteForm.css';
 
 export default class NoteForm extends Component {
   constructor(props) {
@@ -59,7 +60,7 @@ export default class NoteForm extends Component {
 
   renderCategoryOptions() {
     return (
-      <div>
+      <div className='category-options'>
 
         { this.renderExistingCategorySelection() }
 
@@ -76,7 +77,7 @@ export default class NoteForm extends Component {
 
   renderNewCategoryForm() {
     return (
-      <div>
+      <div className='new-category-form'>
         <input          
           type='text'
           value={this.state.newCategory}
@@ -111,11 +112,17 @@ export default class NoteForm extends Component {
             onChange={e => this.handleNewNoteStateChange(e)}
             placeholder='enter note content'>              
           </textarea>
-  
-          <button
-            onClick={e => this.changeCategoryOptionsState(e)}>
-            add a category
-          </button>
+
+          {
+            this.state.categoryOptions ? 
+            null
+            :
+            <button
+              onClick={e => this.changeCategoryOptionsState(e)}>
+              add a category
+            </button>
+          }
+
 
           { this.state.categoryOptions ? this.renderCategoryOptions() : null}
   

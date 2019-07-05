@@ -1,0 +1,33 @@
+:root {
+  --light-pink: #D26269;
+  --dark-pink: #FF4765;
+  --light-grey: #6D8788;
+  --dark-grey: #2F3D3C;
+  --dark-tan: #785F54;
+}
+
+.App {
+  background: var(--dark-grey);
+  height: 100vh;
+}
+
+.sidebar {
+  background: #000;
+  height: 100%;
+  text-align: center;
+  width: 350px;
+}
+
+.sidebar * {
+  color: #fff;
+}
+
+.sidebar-title {
+  margin: 0;
+  padding-top: 40px;
+  transition: all 1s;
+} 
+
+.sidebar-title:hover {
+  color: var(--dark-pink)
+}
