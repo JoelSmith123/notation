@@ -1,0 +1,19 @@
+.sidebar-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-form input,
+.sidebar-form textarea {
+  color: #000;
+  margin: 10px auto;
+  font-size: 1rem;
+  width: 80%;
+}
+
+.sidebar-form button {
+  color: #000;
+  margin: 10px auto;
+  font-size: 1rem;
+  width: 70%;
+}

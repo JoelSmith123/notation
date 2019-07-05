@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './NoteForm.css';
 
 export default class NoteForm extends Component {
   constructor(props) {
