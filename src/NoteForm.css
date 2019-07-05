@@ -1,19 +1,52 @@
 .sidebar-form {
   display: flex;
   flex-direction: column;
+  margin-top: 60px;
+}
+
+.sidebar-form * {
+  outline: none;
 }
 
 .sidebar-form input,
 .sidebar-form textarea {
   color: #000;
-  margin: 10px auto;
+  border-radius: 3px;
   font-size: 1rem;
+  margin: 10px auto;
   width: 80%;
+}
+
+.sidebar-form input:focus,
+.sidebar-form textarea:focus {
+  border: 3px solid var(--dark-pink);
+}
+
+.sidebar-form textarea {
+  margin-bottom: 60px;
 }
 
 .sidebar-form button {
   color: #000;
-  margin: 10px auto;
+  border: 2px solid transparent;
+  border-radius: 3px;
   font-size: 1rem;
+  margin: 10px auto;
   width: 70%;
+}
+
+.sidebar-form button:hover {
+  background: var(--light-pink);
+}
+
+.sidebar-form button:active {
+  background: var(--dark-pink);
+}
+
+.sidebar-form h2 {
+  margin: 20px 10px;
+}
+
+.category-options {
+  margin-bottom: 60px;
 }

@@ -60,7 +60,7 @@ export default class NoteForm extends Component {
 
   renderCategoryOptions() {
     return (
-      <div>
+      <div className='category-options'>
 
         { this.renderExistingCategorySelection() }
 
@@ -77,7 +77,7 @@ export default class NoteForm extends Component {
 
   renderNewCategoryForm() {
     return (
-      <div>
+      <div className='new-category-form'>
         <input          
           type='text'
           value={this.state.newCategory}
