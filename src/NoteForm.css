@@ -5,6 +5,7 @@
 }
 
 .sidebar-form * {
+  box-sizing: border-box;
   outline: none;
 }
 
@@ -23,17 +24,11 @@
   border: 3px solid var(--dark-pink);
 }
 
-.sidebar-form textarea {
-  margin-bottom: 60px;
-}
-
 .sidebar-form button {
   color: #000;
-  border: 2px solid transparent;
   border-radius: 3px;
   font-size: 1rem;
-  margin: 10px auto;
-  width: 70%;
+  width: 80%;
 }
 
 .sidebar-form button:hover {
@@ -44,10 +39,21 @@
   background: var(--dark-pink);
 }
 
-.sidebar-form h2 {
-  margin: 20px 10px;
+.sidebar-form h4 {
+  margin: 0 10px;
 }
 
 .category-options {
   margin-bottom: 60px;
+}
+
+.new-category-btn,
+.submit-category-btn {
+  border: 2px solid transparent;
+  margin: 10px auto;
+}
+
+.create-note-btn {
+  border: 3px solid var(--dark-pink);
+  margin: 40px auto;
 }
