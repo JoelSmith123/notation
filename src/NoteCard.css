@@ -1,0 +1,10 @@
+.NoteCard {
+  background: var(--dark-pink);
+  display: inline-block;
+  margin: 60px;
+}
+
+.NoteCard h1,
+.NoteCard p {
+  padding: 20px;
+}
