@@ -4,11 +4,6 @@
   margin-top: 60px;
 }
 
-.sidebar-form * {
-  box-sizing: border-box;
-  outline: none;
-}
-
 .sidebar-form input,
 .sidebar-form textarea,
 .sidebar-form select {

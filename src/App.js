@@ -7,7 +7,7 @@ class App extends Component {
     super();
     this.state = {
       notes: [],
-      categories: ['--categories--'],
+      categories: ['--categories--', 'rocks', 'trees', 'owls'],
       currentCategory: '',
     }
   }
@@ -42,13 +42,15 @@ class App extends Component {
       <div className="App">
   
         <div className='sidebar'>
-          <h1 className='sidebar-title'>notation</h1>
-          
-          <NoteForm 
-            categories={this.state.categories}
-            addNewCategoryToState={this.addNewCategoryToState} 
-            addNewNoteToState={this.addNewNoteToState}
-          />
+          <div className='sidebar-forms'>
+            <h1 className='sidebar-title'>notation</h1>
+            
+            <NoteForm 
+              categories={this.state.categories}
+              addNewCategoryToState={this.addNewCategoryToState} 
+              addNewNoteToState={this.addNewNoteToState}
+            />
+          </div>
 
           <nav className='sidebar-nav'>
             { this.renderSidebarCategoryButtons() }
