@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NoteForm from './NoteForm.js';
 import './App.css';
-import { isDeclareClass } from '@babel/types';
 
 class App extends Component {
   constructor() {
@@ -9,6 +8,7 @@ class App extends Component {
     this.state = {
       notes: [],
       categories: ['--categories--'],
+      currentCategory: '',
     }
   }
 
@@ -22,6 +22,19 @@ class App extends Component {
     e.preventDefault();
     const notes = [...this.state.notes, note]
     this.setState({ notes })
+  }
+
+  renderSidebarCategoryButtons() {
+    const categories = this.state.categories.slice(0);
+    categories.shift();
+    return categories.map((category, key) => {
+      return <button
+                className='sidebar-category-btn'
+                key={key}
+                onClick={() => this.setState({currentCategory: category})}>
+                { category }
+             </button>
+    })
   }
 
   render() {
@@ -38,7 +51,7 @@ class App extends Component {
           />
 
           <nav className='sidebar-nav'>
-
+            { this.renderSidebarCategoryButtons() }
           </nav>
         </div>
 
