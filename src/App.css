@@ -23,11 +23,8 @@
 }
 
 .sidebar-title {
+  color: var(--dark-pink);
   margin: 0;
   padding-top: 40px;
   transition: all 1s;
 } 
-
-.sidebar-title:hover {
-  color: var(--dark-pink)
-}
