@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NoteForm from './NoteForm.js';
 import './App.css';
+import { isDeclareClass } from '@babel/types';
 
 class App extends Component {
   constructor() {
@@ -42,7 +43,7 @@ class App extends Component {
         </div>
 
         <div className='notes-container'>
-  
+          
         </div>
       </div>
     );
