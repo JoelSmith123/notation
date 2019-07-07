@@ -26,6 +26,16 @@ export default class NoteForm extends Component {
     })
   }
 
+  changeNewNoteCategoryState(e) {
+    e.preventDefault();
+    this.setState({
+      newNote: {
+        ...this.state.newNote,
+        category: e.target.value
+      }
+    })
+  }
+
   handleNewCategoryStateChange = (e) => {
     this.setState({
       newCategory: e.target.value
@@ -40,39 +50,10 @@ export default class NoteForm extends Component {
     this.setState({ newNote })
   }
 
-  renderExistingCategorySelection() {
-    if (this.props.categories[0]) {
-      return (
-        <select>
-          {
-            this.props.categories.map((category, key) => {
-              return <option key={key}>{ category }</option>
-            })
-          }
-        </select>
-      )
-    } else {
-      return (
-        <h2>you don't have any categories yet.</h2>
-      )
-    }
-  }
-
-  renderCategoryOptions() {
-    return (
-      <div className='category-options'>
-
-        { this.renderExistingCategorySelection() }
-
-        <button
-          onClick={e => this.changeNewCategoryFormState(e)}>
-          create a new category
-        </button>
-
-        { this.state.newCategoryForm ? this.renderNewCategoryForm() : null }
-
-      </div>      
-    )    
+  submitNewCategory = (e, category) => {
+    this.props.addNewCategoryToState(e, category)
+    this.changeCategoryOptionsState(e)
+    this.setState({ newCategory: '' })
   }
 
   renderNewCategoryForm() {
@@ -85,12 +66,33 @@ export default class NoteForm extends Component {
           placeholder='enter category name'>
         </input>
         <button 
+          className='submit-category-btn'
           type='submit'
-          onClick={e => this.props.addNewCategoryToState(e, this.state.newCategory)}>
+          onClick={e => this.submitNewCategory(e, this.state.newCategory)}>
           submit new category
         </button>
       </div>
     )
+  }
+
+  renderCategoryOptions() {
+    if (this.props.categories[1]) {
+      return (
+        <div>
+          <h4>select a category</h4>            
+          <select onChange={(e) => this.changeNewNoteCategoryState(e)}>
+            {
+              this.props.categories.map((category, key) => {
+                return <option key={key}>{ category }</option>
+              })
+            }
+          </select>
+          <h4>or</h4>
+        </div>
+      )
+    } else {
+       return <h4>you don't have any categories yet.</h4>            
+    }
   }
 
   render() {
@@ -113,20 +115,27 @@ export default class NoteForm extends Component {
             placeholder='enter note content'>              
           </textarea>
 
-          {
-            this.state.categoryOptions ? 
-            null
-            :
-            <button
-              onClick={e => this.changeCategoryOptionsState(e)}>
-              add a category
-            </button>
+          { this.state.categoryOptions ? 
+              null
+            : 
+              this.renderCategoryOptions()
           }
 
+          <button
+            className='new-category-btn'
+            onClick={e => this.changeCategoryOptionsState(e)}>
+            { this.state.categoryOptions ? `cancel`
+              : `create a new category` }
+          </button>
 
-          { this.state.categoryOptions ? this.renderCategoryOptions() : null}
-  
+          {
+            this.state.categoryOptions ?
+            this.renderNewCategoryForm()
+            : null
+          }
+
           <button 
+            className='create-note-btn'
             type='submit'
             onClick={e => this.props.addNewNoteToState(e, this.state.newNote)}>
             create note
