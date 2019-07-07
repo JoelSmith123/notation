@@ -26,6 +26,16 @@ export default class NoteForm extends Component {
     })
   }
 
+  changeNewNoteCategoryState(e) {
+    e.preventDefault();
+    this.setState({
+      newNote: {
+        ...this.state.newNote,
+        category: e.target.value
+      }
+    })
+  }
+
   handleNewCategoryStateChange = (e) => {
     this.setState({
       newCategory: e.target.value
@@ -66,11 +76,11 @@ export default class NoteForm extends Component {
   }
 
   renderCategoryOptions() {
-    if (this.props.categories[0]) {
+    if (this.props.categories[1]) {
       return (
         <div>
           <h4>select a category</h4>            
-          <select>
+          <select onChange={(e) => this.changeNewNoteCategoryState(e)}>
             {
               this.props.categories.map((category, key) => {
                 return <option key={key}>{ category }</option>
