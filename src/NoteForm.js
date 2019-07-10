@@ -131,6 +131,12 @@ export default class NoteForm extends Component {
       <div className='NoteForm'>
         <form className='sidebar-form'>
           
+          {
+            this.props.editCardState ? 
+            <h4>edit title:</h4>
+            : null
+          }
+
           <input
             type='text'
             name='title'
@@ -138,7 +144,13 @@ export default class NoteForm extends Component {
             onChange={e => this.handleNewNoteStateChange(e)}
             placeholder='enter title'>
           </input>
-  
+
+          {
+            this.props.editCardState ? 
+            <h4>edit content:</h4>
+            : null
+          }
+
           <textarea
             name='content'
             value={this.state.newNote.content}

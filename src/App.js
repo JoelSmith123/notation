@@ -31,7 +31,6 @@ class App extends Component {
     e.preventDefault();
     const notes = this.state.notes.slice(0)
     notes.forEach(note => {
-      console.log(note.id, noteId)
       if (note.id === noteId) {
         note.title = editingNote.title;
         note.content = editingNote.content;

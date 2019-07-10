@@ -4,6 +4,10 @@
   margin-top: 60px;
 }
 
+.sidebar-form div {
+  text-align: center;
+}
+
 .sidebar-form input,
 .sidebar-form textarea,
 .sidebar-form select {
@@ -40,6 +44,7 @@
 
 .sidebar-form h4 {
   margin: 0 10px;
+  text-align: center;
 }
 
 .category-options {
