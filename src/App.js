@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      notes: [{ category:'rocks', title: 'note title here', content: 'note content here. there needs to be room for a lot of extra content, details, content and details.'}],
+      notes: [],
       categories: ['--categories--', 'rocks', 'trees', 'owls'],
       currentCategory: '',
     }
@@ -24,6 +24,19 @@ class App extends Component {
     const uuidv4 = require('uuid/v4');
     note.id = uuidv4();
     const notes = [...this.state.notes, note]
+    this.setState({ notes })
+  }
+
+  editNoteInState = (e, noteId, editingNote) => {
+    e.preventDefault();
+    const notes = this.state.notes.slice(0)
+    notes.forEach(note => {
+      if (note.id === noteId) {
+        note.title = editingNote.title;
+        note.content = editingNote.content;
+        note.category = editingNote.category;
+      }
+    })
     this.setState({ notes })
   }
 
@@ -54,11 +67,16 @@ class App extends Component {
 
   renderNoteCards() {
     const notes = this.state.notes.filter(note => note.category === this.state.currentCategory)
-    console.log(notes)
     return notes.map((note, key) => {
       return <NoteCard {...note} 
                        key={key} 
                        removeNoteFromState={this.removeNoteFromState} 
+                       handleEditCardStateChange={this.handleEditCardStateChange}
+                       editCardState={this.state.editCard}
+                       categories={this.state.categories}
+                       addNewCategoryToState={this.addNewCategoryToState} 
+                       addNewNoteToState={this.addNewNoteToState}
+                       editNoteInState={this.editNoteInState}
               />
     })
   }
