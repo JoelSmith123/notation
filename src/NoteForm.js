@@ -12,6 +12,10 @@ export default class NoteForm extends Component {
     }
   }
 
+  componentDidMount() {
+    this.handleEditCardState()
+  }
+
   changeCategoryOptionsState(e) {
     e.preventDefault();
     this.setState({
@@ -40,6 +44,19 @@ export default class NoteForm extends Component {
     this.setState({
       newCategory: e.target.value
     })
+  }
+  
+  handleEditCardState() {
+    if (this.props.editCardState) {
+      this.setState({
+        newNote: {
+          ...this.state.newNote,
+          title: this.props.editingCardTitle,
+          content: this.props.editingCardContent,
+        }
+      })
+      console.log(this.props.editingCardTitle, this.props.editingCardContent)
+    }
   }
 
   handleNewNoteStateChange = (e) => {

@@ -54,7 +54,6 @@ class App extends Component {
 
   renderNoteCards() {
     const notes = this.state.notes.filter(note => note.category === this.state.currentCategory)
-    console.log(notes)
     return notes.map((note, key) => {
       return <NoteCard {...note} 
                        key={key} 

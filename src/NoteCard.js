@@ -24,6 +24,9 @@ export default class NoteCard extends Component {
             categories={this.props.categories}
             addNewCategoryToState={this.props.addNewCategoryToState} 
             addNewNoteToState={this.props.addNewNoteToState}
+            editCardState={this.state.editCard}
+            editingCardTitle={this.props.title}
+            editingCardContent={this.props.content}
           />
           :
           <div>
