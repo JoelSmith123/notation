@@ -21,6 +21,8 @@ class App extends Component {
 
   addNewNoteToState = (e, note) => {
     e.preventDefault();
+    const uuidv4 = require('uuid/v4');
+    note.id = uuidv4();
     const notes = [...this.state.notes, note]
     this.setState({ notes })
   }
