@@ -53,9 +53,9 @@ export default class NoteForm extends Component {
           ...this.state.newNote,
           title: this.props.editingCardTitle,
           content: this.props.editingCardContent,
+          category: this.props.editingCardCategory,
         }
       })
-      console.log(this.props.editingCardTitle, this.props.editingCardContent)
     }
   }
 
@@ -65,6 +65,20 @@ export default class NoteForm extends Component {
       [e.target.name]: e.target.value
     }
     this.setState({ newNote })
+  }
+
+  handleEditNote = (e) => {
+    e.preventDefault();
+    this.props.handleEditCardStateChange(e)
+    this.props.editNoteInState(e, this.props.editingCardId, this.state.newNote);
+  } 
+
+  handleNewNote = (e) => {
+    e.preventDefault();
+    this.setState({
+      newNote: { title: '', content: '', category: '' }
+    })
+    this.props.addNewNoteToState(e, this.state.newNote)
   }
 
   submitNewCategory = (e, category) => {
@@ -97,7 +111,7 @@ export default class NoteForm extends Component {
       return (
         <div>
           <h4>select a category</h4>            
-          <select onChange={(e) => this.changeNewNoteCategoryState(e)}>
+          <select onChange={(e) => this.changeNewNoteCategoryState(e)} value={this.state.newNote.category}>
             {
               this.props.categories.map((category, key) => {
                 return <option key={key}>{ category }</option>
@@ -151,12 +165,26 @@ export default class NoteForm extends Component {
             : null
           }
 
-          <button 
-            className='create-note-btn'
-            type='submit'
-            onClick={e => this.props.addNewNoteToState(e, this.state.newNote)}>
-            create note
-          </button>
+          {
+            this.props.editCardState ? 
+
+            <button 
+              className='create-note-btn'
+              type='submit'
+              onClick={e => this.handleEditNote(e)}>
+              finish editing note
+            </button>
+
+            :
+
+            <button 
+              className='create-note-btn'
+              type='submit'
+              onClick={e => this.handleNewNote(e)}>
+              create note
+            </button>
+          }
+
   
         </form>
       </div>

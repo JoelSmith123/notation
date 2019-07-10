@@ -27,6 +27,10 @@ export default class NoteCard extends Component {
             editCardState={this.state.editCard}
             editingCardTitle={this.props.title}
             editingCardContent={this.props.content}
+            editingCardCategory={this.props.category}
+            editingCardId={this.props.id}
+            editNoteInState={this.props.editNoteInState}
+            handleEditCardStateChange={this.handleEditCardStateChange}
           />
           :
           <div>
@@ -34,8 +38,13 @@ export default class NoteCard extends Component {
             <p>{this.props.content}</p>
           </div>
         }
-        <button onClick={(e) =>this. props.removeNoteFromState(e, this.props.id)}>delete</button>
-        <button onClick={(e) => this.handleEditCardStateChange(e)}>edit</button>
+        <button onClick={(e) => this.props.removeNoteFromState(e, this.props.id)}>delete</button>
+        <button onClick={(e) => this.handleEditCardStateChange(e)}>
+          {
+            this.state.editCard ? 
+            `cancel edit`
+            : `edit`
+          }</button>
       </div>
     )
   }
