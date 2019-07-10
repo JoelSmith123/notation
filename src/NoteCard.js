@@ -6,7 +6,7 @@ export default function NoteCard(props) {
     <div className='NoteCard'>
       <h1>{props.title}</h1>
       <p>{props.content}</p>
-      <button onClick={(e) => props.removeNoteFromState(e, props.id)}></button>
+      <button onClick={(e) => props.removeNoteFromState(e, props.id)}>delete</button>
     </div>
   )
 }
