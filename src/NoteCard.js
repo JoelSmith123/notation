@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
+import NoteForm from './NoteForm.js'
 import './NoteCard.css';
 
-export default function NoteCard(props) {
-  return (
-    <div className='NoteCard'>
-      <h1>{props.title}</h1>
-      <p>{props.content}</p>
-      <button onClick={(e) => props.removeNoteFromState(e, props.id)}>delete</button>
-    </div>
-  )
+export default class NoteCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      editCard: false,
+    }
+  }
+
+  handleEditCardStateChange = (e) => {
+    e.preventDefault();
+    this.setState({ editCard: !this.state.editCard })
+  }
+
+  render() {
+    return (
+      <div className='NoteCard'>
+        {
+          this.state.editCard ?
+          <NoteForm 
+            categories={this.props.categories}
+            addNewCategoryToState={this.props.addNewCategoryToState} 
+            addNewNoteToState={this.props.addNewNoteToState}
+          />
+          :
+          <div>
+            <h1>{this.props.title}</h1>
+            <p>{this.props.content}</p>
+          </div>
+        }
+        <button onClick={(e) =>this. props.removeNoteFromState(e, this.props.id)}>delete</button>
+        <button onClick={(e) => this.handleEditCardStateChange(e)}>edit</button>
+      </div>
+    )
+  }
 }

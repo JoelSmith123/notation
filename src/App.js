@@ -59,6 +59,11 @@ class App extends Component {
       return <NoteCard {...note} 
                        key={key} 
                        removeNoteFromState={this.removeNoteFromState} 
+                       handleEditCardStateChange={this.handleEditCardStateChange}
+                       editCardState={this.state.editCard}
+                       categories={this.state.categories}
+                       addNewCategoryToState={this.addNewCategoryToState} 
+                       addNewNoteToState={this.addNewNoteToState}
               />
     })
   }
