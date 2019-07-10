@@ -21,7 +21,15 @@ class App extends Component {
 
   addNewNoteToState = (e, note) => {
     e.preventDefault();
+    const uuidv4 = require('uuid/v4');
+    note.id = uuidv4();
     const notes = [...this.state.notes, note]
+    this.setState({ notes })
+  }
+
+  removeNoteFromState = (e, noteId) => {
+    e.preventDefault();
+    const notes = this.state.notes.filter(note => noteId !== note.id)
     this.setState({ notes })
   }
 
@@ -48,7 +56,10 @@ class App extends Component {
     const notes = this.state.notes.filter(note => note.category === this.state.currentCategory)
     console.log(notes)
     return notes.map((note, key) => {
-      return <NoteCard {...note} key={key} />
+      return <NoteCard {...note} 
+                       key={key} 
+                       removeNoteFromState={this.removeNoteFromState} 
+              />
     })
   }
 
