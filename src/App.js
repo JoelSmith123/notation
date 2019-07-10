@@ -27,6 +27,12 @@ class App extends Component {
     this.setState({ notes })
   }
 
+  removeNoteFromState = (e, noteId) => {
+    e.preventDefault();
+    const notes = this.state.notes.filter(note => noteId !== note.id)
+    this.setState({ notes })
+  }
+
   renderSidebarCategoryButtons() {
     const categories = this.state.categories.slice(0);
     categories.shift();
@@ -50,7 +56,10 @@ class App extends Component {
     const notes = this.state.notes.filter(note => note.category === this.state.currentCategory)
     console.log(notes)
     return notes.map((note, key) => {
-      return <NoteCard {...note} key={key} />
+      return <NoteCard {...note} 
+                       key={key} 
+                       removeNoteFromState={this.removeNoteFromState} 
+              />
     })
   }
 
